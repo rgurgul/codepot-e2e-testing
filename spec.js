@@ -1,9 +1,9 @@
 describe('Contact page', function () {
 
     var contactForm = element(by.name('contactForm'));
-    var titleField = contactForm.element(by.css('input[type=text]'));
-    var emailField = contactForm.element(by.css('input[type=email]'));
-    var msgField = contactForm.$('textarea');
+    var fieldName = contactForm.element(by.css('input[type=text]'));
+    var fieldEmail = contactForm.$('input[type=email]');
+    var fieldMsg = contactForm.$('textarea');
     var errors = contactForm.$$('.text-danger.ng-active');
     var btnSend = contactForm.element(by.css('button[ng-click="sendForm()"]'));
     var alertSuccess = element(by.css('.alert-success'));
@@ -17,21 +17,20 @@ describe('Contact page', function () {
     });
 
     it('should fill name field', function () {
-        titleField.sendKeys('witam');
-        expect(titleField.getAttribute('value')).toBe('witam');
+        fieldName.sendKeys('John');
+        expect(fieldName.getAttribute('value')).toBe('John');
     });
 
     it('should display 2 errors', function () {
-        titleField.sendKeys('witam');
+        fieldName.sendKeys('John');
         btnSend.click();
         expect(errors.count()).toBe(2);
     });
 
     it('should display success alert and 0 errors', function () {
-        titleField.sendKeys('witam');
-        emailField.sendKeys('john@doe.pl');
-        msgField.sendKeys('wiadomość');
-
+        fieldName.sendKeys('John');
+        fieldEmail.sendKeys('john@doe.pl');
+        fieldMsg.sendKeys('a message');
         btnSend.click();
         expect(alertSuccess.isDisplayed()).toBe(true);
         expect(errors.count()).toBe(0);
