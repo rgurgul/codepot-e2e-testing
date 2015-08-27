@@ -1,3 +1,5 @@
+var capture = require('./screenshot');
+
 describe('Contact page', function () {
 
     var contactForm = element(by.name('contactForm'));
@@ -10,6 +12,11 @@ describe('Contact page', function () {
 
     beforeEach(function () {
         browser.get(browser.baseUrl + 'contact');
+    });
+
+    afterEach(function () {
+        var spec = jasmine.getEnv().currentSpec;
+        capture.takeScreenshotOnFailure(spec);
     });
 
     it('should get page contact', function () {
