@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-exports.takeScreenshotOnFailure = function (spec) {
+module.exports.takeScreenshotOnFailure = function (spec) {
     browser.takeScreenshot()
         .then(function (png) {
             if (spec.results().passed()) return;
