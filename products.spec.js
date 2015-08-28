@@ -40,7 +40,7 @@ describe('products page', function () {
         var modalBtnOk = productForm.element(by.buttonText("OK"));
 
         modalTitle.sendKeys(productTitle);
-        modalDesc.sendKeys('desc');
+        modalDesc.sendKeys('a description');
         modalPrice.sendKeys(123);
         var fileToUpload = 'image.jpg';
         var absolutePath = path.resolve(__dirname + '/assets/', fileToUpload);
@@ -59,13 +59,13 @@ describe('products page', function () {
         search.sendKeys(productTitle);
         expect(getProductsCount()).toBe(1);
 
-        // remove product
+        // product removing
         var btnDelete = element(by.css("button.btn-danger"));
         btnDelete.click();
         var deleteForm = element(by.name('deleteForm'));
         var modalDeleteBtnOk = deleteForm.element(by.buttonText("OK"));
         var modalReason = deleteForm.element(by.css('textarea'));
-        modalReason.sendKeys('przyczyna');
+        modalReason.sendKeys('a reason');
         modalDeleteBtnOk.click();
         helpers.waitForAlert();
         expect(getProductsCount()).toBe(0);
