@@ -2,7 +2,7 @@ function Helpers() {
 
     browser.driver.manage().window().maximize();
 
-    this.timeOut = 1000;
+    this.timeOut = 2000;
 
     this.config = {
         login: 'admin',
