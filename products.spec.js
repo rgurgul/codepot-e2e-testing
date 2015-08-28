@@ -23,6 +23,10 @@ describe('products page', function () {
             })
     }
 
+    it('should get page products', function () {
+        expect(browser.getLocationAbsUrl()).toBe('/product-list');
+    });
+
     it('should add new product', function () {
         // adding a new product
         var btnAddProduct = element(by.css('a[ng-click="productsInterface.add()"]'));
